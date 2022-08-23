@@ -2,7 +2,7 @@ const express = require("express")
 cors = require("cors")
 const app = express()
 //app must get data from this port aka plug
-app.set("port", process.envPORT || 3000)
+app.set("port", process.env.PORT || 3000)
 //aka cable
 app.use(express.json());
 //shares resources across origins therefore allows process
