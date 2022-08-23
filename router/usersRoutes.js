@@ -23,7 +23,7 @@ router.post("/register", (req, res) => {
       name,
       email,
       //sending the hash value to be stored within the table
-      hash,
+      password:hash,
     };
     con.query(sql, user, (err, result) => {
       if (err) throw err;
@@ -68,6 +68,22 @@ router.post("/login", (req, res) => {
   }
 });
 
+//select single user
+router.get("/:id", (req,res) =>{
+    try{
+        con.query(
+            `SELECT * FROM users WHERE user_id = "${req.params.id}"`, 
+            (err, result) => {
+                if (err) throw err;
+                res.json(result);
+            }
+        );
+        } catch(error){
+            console.log(error);
+        };
+});
+
+
 //select all users
 router.get("/", (req,res) =>{
     try{
@@ -81,5 +97,36 @@ router.get("/", (req,res) =>{
     }
 });
 
+//delete user account
+router.delete('/:id', (req,res)=>{
+const {user_id}=req.body
+        try{
+            con.query(
+            `DELETE FROM users WHERE user_id="${user_id}"`, 
+            (err, result) => {
+                if (err) throw err;
+                res.json(result);
+            }
+        );
+        } catch(error){
+            console.log(error);
+        };
+    })
+
+//update user
+router.put('/:id', (req, res)=>{
+    const {user_id,name,email,password}= req.body
+        try{
+            con.query(
+            `UPDATE users SET name="${name}",email="${email}",password="${password}" WHERE user_id=${user_id}`, 
+            (err, result) => {
+                if (err) throw err;
+                res.json(result);
+            }
+        );
+        } catch(error){
+            console.log(error);
+        };
+    })
 
 module.exports = router
