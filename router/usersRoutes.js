@@ -1,36 +1,18 @@
 const express = require ("express")
 const router = express.Router()
 const con = require ("../lib/db_connection")
-
- //select all users
- router.get("/", (req,res) =>{
-    try{
-        con.query("SELECT * FROM users", (err, result) =>{
-            if (err) throw err;
-            res.send (result);
-        })
-    } catch (error){
-        console.log (error)
-        res.status (400).send(error)
-    }
-});
-
 const bcrypt = require('bcryptjs');
 
+
 // Register Route
-// The Route where Encryption starts
+// The Route where Encryption happens
 router.post("/register", (req, res) => {
   try {
     let sql = "INSERT INTO users SET ?";
     const {
-      full_name,
+      name,
       email,
-      password,
-      user_type,
-      phone,
-      country,
-      billing_address,
-      default_shipping_address,
+      password
     } = req.body;
 
     // The start of hashing / encryption
@@ -38,26 +20,20 @@ router.post("/register", (req, res) => {
     const hash = bcrypt.hashSync(password, salt);
 
     let user = {
-      full_name,
+      name,
       email,
-      // We sending the hash value to be stored witin the table
+      //sending the hash value to be stored within the table
       hash,
-      user_type,
-      phone,
-      country,
-      billing_address,
-      default_shipping_address,
     };
     con.query(sql, user, (err, result) => {
       if (err) throw err;
       console.log(result);
-      res.send(`User ${(user.full_name, user.email)} created successfully`);
+      res.send(`User ${(user.name)} created successfully`);
     });
   } catch (error) {
     console.log(error);
   }
 });
-
 
 // Login
 // The Route where Decryption happens
@@ -91,5 +67,19 @@ router.post("/login", (req, res) => {
     console.log(error);
   }
 });
+
+//select all users
+router.get("/", (req,res) =>{
+    try{
+        con.query("SELECT * FROM users", (err, result) =>{
+            if (err) throw err;
+            res.send (result);
+        })
+    } catch (error){
+        console.log (error)
+        res.status (400).send(error)
+    }
+});
+
 
 module.exports = router
