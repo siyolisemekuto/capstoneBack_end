@@ -115,10 +115,10 @@ router.delete('/:id', (req,res)=>{
 
 //update user
 router.put('/:id', (req, res)=>{
-    const {name,email,password}= req.body
+    const {name,email}= req.body
         try{
             con.query(
-            `UPDATE users SET name="${name}",email="${email}",password="${password}" WHERE user_id=${req.params.id}`, 
+            `UPDATE users SET name="${name}",email="${email}" WHERE user_id=${req.params.id}`, 
             (err, result) => {
                 if (err) throw err;
                 res.json(result);
@@ -129,7 +129,7 @@ router.put('/:id', (req, res)=>{
         };
     })
 
-
+//forgot password with nodemailer
 router.post('/forgot-psw', (req, res) => {
     try {
     let sql = `SELECT * FROM users WHERE ?`
@@ -166,7 +166,7 @@ router.post('/forgot-psw', (req, res) => {
             <br>
             <h4>Click link below to reset your password</h4>
 
-            <a href="https://user-images.githubusercontent.com/4998145/52377595-605e4400-2a33-11e9-80f1-c9f61b163c6a.png">
+            <a href="http://localhost:3000/index">
               Click Here to Reset Password
               user_id = ${result[0].user_id}
             </a>
@@ -216,20 +216,15 @@ router.put('reset-psw/:id', (req, res) => {
     if (result === 0) {
       res.status(400), res.send("User not found");
     } else {
-      let newPassword = `UPDATE users SET password=${password} WHERE user_id=${req.params.id}`;
+      let newPassword = `UPDATE users SET ? WHERE user_id=${req.params.id}`;
 
       const salt = bcrypt.genSaltSync(10);
       const hash = bcrypt.hashSync(req.body.password, salt);
 
       const updatedPassword = {
-        full_name: result[0].full_name,
+        name: result[0].name,
         email: result[0].email,
-        user_type: result[0].user_type,
-        phone: result[0].phone,
-        country: result[0].country,
-        billing_address: result[0].billing_address,
-        default_shipping_address: result[0].default_shipping_address,
-
+        
         // Only thing im changing in table
         password: hash,
       };

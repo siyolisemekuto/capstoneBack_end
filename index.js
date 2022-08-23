@@ -9,17 +9,24 @@ app.use(express.json());
 app.use(cors())
 
 //importing routes
-const usersRoutes = require("./router/usersRoutes")
+const usersRoutes = require("./router/usersRoutes");
+
 
 //get to front-end
 app.get("/", (req,res) =>{
     //msg will show database is connected
     res.json({msg:"We are here!!"})
 })
+app.get("/index", (req,res) =>{
+ res.send(`
+ <h1>Let's see if this works</h1>
+ `)
+})
 
 //implementation of routes
 //route link (this file for this url)
-app.use("/users", usersRoutes)
+app.use("/users", usersRoutes);
+
 
 app.listen(app.get("port"),() =>{
     console.log(`Listening for calls on port ${app.get("port")}`);
