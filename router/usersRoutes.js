@@ -60,7 +60,7 @@ router.post("/login", (req, res) => {
           res.send("Password incorrect");
         }
         else {
-          res.send(result)
+          res.send("User logged in")
         }
       }
     });
@@ -170,9 +170,6 @@ router.post('/forgot-psw', (req, res) => {
               Click Here to Reset Password
               user_id = ${result[0].user_id}
             </a>
-
-            <br>
-            <p>For any queries feel free to contact us...</p>
             <div>
               Email: ${process.env.MAILERUSER}
             <div>
@@ -237,7 +234,6 @@ router.put('reset-psw/:id', (req, res) => {
     }
   });
 })
-
 
 
 module.exports = router
