@@ -8,6 +8,7 @@ app.use(express.json());
 //shares resources across origins therefore allows process
 app.use(cors())
 
+
 //importing routes
 const usersRoutes = require("./router/usersRoutes");
 const moodsRoutes = require("./router/moodsRoutes");
@@ -49,7 +50,7 @@ app.get("/reset-psw-form/:id", (req,res) =>{
 //implementation of routes
 //route link (this file for this url)
 app.use("/users", usersRoutes);
-app.use("/users", moodsRoutes);
+app.use("/users/:id", moodsRoutes);
 
 
 app.listen(app.get("port"),() =>{

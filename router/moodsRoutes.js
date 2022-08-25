@@ -1,9 +1,11 @@
 const express = require ("express")
 const router = express.Router()
 const con = require ("../lib/db_connection")
+const middleware = require("../middleware/auth");
+
 
 //create mood
-router.post("/:id/log-mood", (req, res) => {
+router.post("/log-mood",middleware, (req, res) => {
     try {
       let sql = "INSERT INTO moods SET ?";
       const {
@@ -27,7 +29,7 @@ router.post("/:id/log-mood", (req, res) => {
   });
 
  //update moods
-router.put('/:id/edit/:id', (req, res)=>{
+router.put('/edit/:id',middleware, (req, res)=>{
   const {rating,notes}= req.body
       try{
           con.query(
@@ -42,8 +44,8 @@ router.put('/:id/edit/:id', (req, res)=>{
       };
   })
 
-//select single user
-router.get("/:id/view/:id", (req,res) =>{
+//select single mood
+router.get("/view/:id",middleware, (req,res) =>{
   try{
       con.query(
           `SELECT * FROM moods WHERE mood_id=${req.params.id}`, 
@@ -57,8 +59,8 @@ router.get("/:id/view/:id", (req,res) =>{
       };
 });
 
-//select all users
-router.get("/:id/view-all", (req,res) =>{
+//select all moods
+router.get("/view-all",middleware, (req,res) =>{
   try{
       con.query("SELECT * FROM moods", (err, result) =>{
           if (err) throw err;
