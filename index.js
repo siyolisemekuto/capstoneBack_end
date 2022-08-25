@@ -17,24 +17,34 @@ app.get("/", (req,res) =>{
     //msg will show database is connected
     res.json({msg:"We are here!!"})
 })
-app.get("/index", (req,res) =>{
- res.send(`
- <h1>Create a new password</h1>
- <form>
-    <div class="row">
-        <div class="col-md-6 mb-3">
-            <input type="email" class="form-control" placeholder="Email">
-        </div>
-        <div class="col-md-6 mb-3">
-            <input type="password" class="form-control" placeholder="New password">
-        </div>
-        <div class="col-auto mt-3 mb-3">
-            <button type="submit" class="btn" id="submit">Send Message</button>
-        </div>
-    </div>
+app.get("/reset-psw-form/:id", (req,res) =>{
+ res.send(
+`  
+<form >
+    <label for="newPassword">new password </label>
+    <input id="newPassword" type="password" name="password">
+   <button onclick="Reset(${req.params.id})">submit</button>
 </form>
- `)
-})
+<script>
+ const Reset = async (id) => {
+
+ const res = await fetch("http://localhost:3000/users/reset-psw/" + id,{
+    method:"PUT",
+    body:JSON.stringify({
+     password:document.getElementById("newPassword").value
+    }),
+    headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      }
+ });
+ const resetdata = res.json
+ console.log(resetdata);
+ localStorage.setItem("password",JSON.stringify(resetdata))
+}
+</script>
+` 
+ )
+}) 
 
 //implementation of routes
 //route link (this file for this url)
