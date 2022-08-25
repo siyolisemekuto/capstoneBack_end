@@ -26,18 +26,12 @@ router.post("/:id/log-mood", (req, res) => {
     }
   });
 
-  //edit moods
+ //update moods
 router.put('/:id/edit/:id', (req, res)=>{
-  const {rating,notes
-  }= req.body
-  let mood = {
-    user_id:req.params.id,
-    rating,
-    notes
-  };
+  const {rating,notes}= req.body
       try{
-          con.query(sql,mood,
-          `UPDATE users SET rating="${rating}",notes="${notes}" WHERE mood_id=${req.params.id}`, 
+          con.query(
+          `UPDATE moods SET rating="${rating}",notes="${notes}" WHERE mood_id=${req.params.id}`, 
           (err, result) => {
               if (err) throw err;
               res.json(result);
@@ -47,5 +41,33 @@ router.put('/:id/edit/:id', (req, res)=>{
           console.log(error);
       };
   })
+
+//select single user
+router.get("/:id/view/:id", (req,res) =>{
+  try{
+      con.query(
+          `SELECT * FROM moods WHERE mood_id=${req.params.id}`, 
+          (err, result) => {
+              if (err) throw err;
+              res.json(result);
+          }
+      );
+      } catch(error){
+          console.log(error);
+      };
+});
+
+//select all users
+router.get("/:id/view-all", (req,res) =>{
+  try{
+      con.query("SELECT * FROM moods", (err, result) =>{
+          if (err) throw err;
+          res.send (result);
+      })
+  } catch (error){
+      console.log (error)
+      res.status (400).send(error)
+  }
+});
   
   module.exports = router

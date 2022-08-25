@@ -19,7 +19,7 @@ app.get("/", (req,res) =>{
 })
 app.get("/index", (req,res) =>{
  res.send(`
- <h1>Let's see if this works</h1>
+ <h1>Create a new password</h1>
  <form>
     <div class="row">
         <div class="col-md-6 mb-3">
