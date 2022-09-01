@@ -15,7 +15,8 @@ router.post("/register", (req, res) => {
     const {
       name,
       email,
-      password
+      password,
+      image
     } = req.body;
 
     // The start of hashing / encryption
@@ -27,6 +28,7 @@ router.post("/register", (req, res) => {
       email,
       //sending the hash value to be stored within the table
       password:hash,
+      image
     };
     con.query(sql, user, (err, result) => {
       if (err) throw err;
