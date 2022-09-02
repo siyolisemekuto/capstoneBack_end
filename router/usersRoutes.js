@@ -10,6 +10,8 @@ const nodemailer = require('nodemailer');
 // Register Route
 // The Route where Encryption happens
 router.post("/register", (req, res) => {
+  res.setHeader('Access-Control-Allow-Methods','POST');
+
   try {
     let sql = "INSERT INTO users SET ?";
     const {
