@@ -4,12 +4,12 @@ cors = require("cors")
 
 // Configure Server
 const app = express(); // Initialize express as an app variable
-app.use(
-  cors({
-    origin: ["http://127.0.0.1:8080", "http://localhost:8080"],
-    credentials: true,
-  })
-); // Dont let local development give errors
+// app.use(
+//   cors({
+//     origin: ["http://127.0.0.1:8080", "http://localhost:8080"],
+//     credentials: true,
+//   })
+// ); // Dont let local development give errors
 app.set("port", process.env.PORT || 3000); // Set the port
 app.use(express.json()); // Enable the server to handle JSON requests
 // app.use(express.static("public")); // Static
