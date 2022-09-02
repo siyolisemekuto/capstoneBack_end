@@ -15,7 +15,7 @@ app.use(express.json()); // Enable the server to handle JSON requests
 // app.use(express.static("public")); // Static
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Headers", "*");
+  res.setHeader('Access-Control-Allow-Methods','GET, POST, PATCH, DELETE');
   next();
 });
 //app must get data from this port aka plug
@@ -31,34 +31,7 @@ app.get("/", (req,res) =>{
     //msg will show database is connected
     res.json({msg:"We are here!!"})
 })
-app.get("/reset-psw-form/:id", (req,res) =>{
- res.send(
-`  
-<form >
-    <label for="newPassword">new password </label>
-    <input id="newPassword" type="password" name="password">
-   <button onclick="Reset(${req.params.id})">submit</button>
-</form>
-<script>
- const Reset = async (id) => {
-
- const res = await fetch("http://localhost:3000/users/reset-psw/" + id,{
-    method:"PUT",
-    body:JSON.stringify({
-     password:document.getElementById("newPassword").value
-    }),
-    headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      }
- });
- const resetdata = res.json
- console.log(resetdata);
- localStorage.setItem("password",JSON.stringify(resetdata))
-}
-</script>
-` 
- )
-}) 
+ 
 
 //implementation of routes
 //route link (this file for this url)
