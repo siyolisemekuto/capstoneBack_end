@@ -9,11 +9,12 @@ router.post("/log-mood",middleware, (req, res) => {
     try {
       let sql = "INSERT INTO moods SET ?";
       const {
+        user_id,
         rating,
         notes
       } = req.body;
       let mood = {
-        user_id:req.params.id,
+        user_id,
         rating,
         notes
       };
