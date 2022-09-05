@@ -47,7 +47,7 @@ router.put('/edit/:id',middleware, (req, res)=>{
   })
 
 //select single mood
-router.get("/view/:id", (req,res) =>{
+router.get("/view/:id",middleware, (req,res) =>{
   try{
       con.query(
           `SELECT * FROM moods WHERE mood_id=${req.params.id}`, 
@@ -62,7 +62,7 @@ router.get("/view/:id", (req,res) =>{
 });
 
 //select all moods
-router.get("/view-all", (req,res) =>{
+router.get("/view-all",middleware, (req,res) =>{
   try{
       con.query("SELECT * FROM moods", (err, result) =>{
           if (err) throw err;
