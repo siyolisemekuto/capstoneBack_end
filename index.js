@@ -2,6 +2,7 @@ const express = require("express")
 cors = require("cors")
 
 
+
 // Configure Server
 const app = express(); // Initialize express as an app variable
 // app.use(
@@ -43,7 +44,7 @@ app.get("/", (req,res) =>{
 //implementation of routes
 //route link (this file for this url)
 app.use("/users", usersRoutes);
-app.use("/users/:id", moodsRoutes);
+app.use("/users/:id",moodsRoutes);
 
 
 app.listen(app.get("port"),() =>{

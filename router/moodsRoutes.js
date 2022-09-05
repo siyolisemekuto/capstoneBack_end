@@ -4,6 +4,7 @@ const con = require ("../lib/db_connection")
 const middleware = require("../middleware/auth");
 
 
+
 //create mood
 router.post("/log-mood",middleware, (req, res) => {
     try {
@@ -22,7 +23,7 @@ router.post("/log-mood",middleware, (req, res) => {
       con.query(sql, mood, (err, result) => {
         if (err) throw err;
         console.log(result);
-        res.send(`Today's mood was logged successfully`);
+        res.send(JSON.stringify("Today's mood was logged successfully"));
       });
     } catch (error) {
       console.log(error);
@@ -46,7 +47,7 @@ router.put('/edit/:id',middleware, (req, res)=>{
   })
 
 //select single mood
-router.get("/view/:id",middleware, (req,res) =>{
+router.get("/view/:id", (req,res) =>{
   try{
       con.query(
           `SELECT * FROM moods WHERE mood_id=${req.params.id}`, 
@@ -61,7 +62,7 @@ router.get("/view/:id",middleware, (req,res) =>{
 });
 
 //select all moods
-router.get("/view-all",middleware, (req,res) =>{
+router.get("/view-all", (req,res) =>{
   try{
       con.query("SELECT * FROM moods", (err, result) =>{
           if (err) throw err;
