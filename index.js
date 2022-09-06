@@ -35,7 +35,7 @@ const usersRoutes = require("./router/usersRoutes");
 const moodsRoutes = require("./router/moodsRoutes");
 
 //get to front-end
-router.get("/", (req,res) =>{
+app.get("/", (req,res) =>{
     //msg will show database is connected
     res.sendFile(path.join(__dirname, 'index.html'));
 
