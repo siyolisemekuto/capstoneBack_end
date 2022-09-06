@@ -37,6 +37,7 @@ const moodsRoutes = require("./router/moodsRoutes");
 //get to front-end
 app.get("/", (req,res) =>{
     //msg will show database is connected
+    res.status(200).json({ msg: 'Home' });
     res.sendFile(path.join(__dirname, 'index.html'));
 
 })
