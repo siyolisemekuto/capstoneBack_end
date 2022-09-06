@@ -64,7 +64,9 @@ router.get("/view/:id",middleware, (req,res) =>{
 //select all moods
 router.get("/view-all",middleware, (req,res) =>{
   try{
-      con.query("SELECT * FROM moods", (err, result) =>{
+      con.query(
+        `SELECT * FROM moods WHERE user_id=${req.params.id}`, 
+        (err, result) =>{
           if (err) throw err;
           res.send (result);
       })
