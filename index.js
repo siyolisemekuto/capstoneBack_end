@@ -37,7 +37,7 @@ const moodsRoutes = require("./router/moodsRoutes");
 //get to front-end
 app.get("/", (req,res) =>{
     //msg will show database is connected
-    res.json(msg:`
+    res.json({msg:`
     <h1>All Endpoints Available my API</h1>
     <h2>Users Route:</h2>
     <table>
@@ -88,13 +88,29 @@ app.get("/", (req,res) =>{
         </tr>
     </table>
     <h2>Moods:</h2>
-        <ul>
-            <li><span>POST</span><a href="https://capstone-mood-tracker.herokuapp.com/users/:id">/log-mood</a>
-            <li><span>PUT</span><a href="https://capstone-mood-tracker.herokuapp.com/users/:id">/edit/:id</a></li>
-            <li><span>GET</span><a href="https://capstone-mood-tracker.herokuapp.com/users/:id">/view/:id</a></li>
-            <li><span>GET</span><a href="https://capstone-mood-tracker.herokuapp.com/users/:id">/:id/view-all</a></li>
-        </ul> 
-    `)
+        <table>
+            <tr>
+            <td>POST</td>
+            <td><a href="https://capstone-mood-tracker.herokuapp.com/users/:id"></a></td>
+            <td>/log-mood</td>
+            </tr>
+            <tr>
+            <td>PUT</td>
+            <td><a href="https://capstone-mood-tracker.herokuapp.com/users/:id"></a></td>
+            <td>/edit/:id</td>
+            </tr>
+            <tr>
+            <td>GET</td>
+            <td><a href="https://capstone-mood-tracker.herokuapp.com/users/:id"></a></td>
+            <td/view/:id</td>
+            </tr>
+            <tr>
+            <td>GET</td>
+            <td><a href="https://capstone-mood-tracker.herokuapp.com/users/:id"></a></td>
+            <td>/:id/view-all</td>
+            </tr>
+        </table> 
+    `})
 })
  
 
