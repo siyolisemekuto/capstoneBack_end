@@ -40,17 +40,53 @@ app.get("/", (req,res) =>{
     res.json({msg:`
     <h1>All Endpoints Available my API</h1>
     <h2>Users Route:</h2>
-    <ul>
-        <li><span>POST</span><a href="https://capstone-mood-tracker.herokuapp.com/users">/register</a>
-        <li><span>POST</span><a href="https://capstone-mood-tracker.herokuapp.com/users">/login</a></li>
-        <li><span>GET</span><a href="https://capstone-mood-tracker.herokuapp.com/users">/verify</a></li>
-        <li><span>GET</span><a href="https://capstone-mood-tracker.herokuapp.com/users">/:id</a></li>
-        <li><span>GET</span><a href="https://capstone-mood-tracker.herokuapp.com/users">/</a></li>
-        <li><span>DELETE</span><a href="https://capstone-mood-tracker.herokuapp.com/users">/:id</a></li></li>
-        <li><span>POST</span><a href="https://capstone-mood-tracker.herokuapp.com/users">/forgot-psw</a></li></li>
-        <li><span>PUT</span><a href="https://capstone-mood-tracker.herokuapp.com/users">/:id</a></li></li>
-        <li><span>PUT</span><a href="https://capstone-mood-tracker.herokuapp.com/users">/reset-psw/:id</a></li></li>
-    </ul>
+    <table>
+        <tr>
+        <td>POST</td>
+        <td><a href="https://capstone-mood-tracker.herokuapp.com/users"></a><td>
+        <td>/register<td>
+        </tr>
+        <tr>
+        <td>POST</td>
+        <td><a href="https://capstone-mood-tracker.herokuapp.com/users"></a></td>
+        <td>/login</td>
+        </tr>
+        <tr>
+        <td>GET</td>
+        <td><a href="https://capstone-mood-tracker.herokuapp.com/users"></a></td>
+        <td>/verify<td>
+        </tr>
+        <tr>
+        <td>GET</td>
+        <td><a href="https://capstone-mood-tracker.herokuapp.com/users"></a></td>
+        <td>/:id</td>
+        </tr>
+        <tr>
+        <td>GET</td>
+        <td><a href="https://capstone-mood-tracker.herokuapp.com/users"></a></td>
+        <td>/</td>
+        </tr>
+        <tr>
+        <td>DELETE</td>
+        <td><a href="https://capstone-mood-tracker.herokuapp.com/users"></a></td>
+        <td>/:id</td>
+        </tr>
+        <tr>
+        <td>POST</td>
+        <td><a href="https://capstone-mood-tracker.herokuapp.com/users"></a></td>
+        <td>/forgot-psw</td>
+        </tr>
+        <tr>
+        <td>PUT</td>
+        <td><a href="https://capstone-mood-tracker.herokuapp.com/users"></a></td>
+        <td>/:id</td>
+        </tr>
+        <tr>
+        <td>PUT</td>
+        <td><a href="https://capstone-mood-tracker.herokuapp.com/users"></a></td>
+        <td>/reset-psw/:id</td>
+        </tr>
+    </table>
     <h2>Moods:</h2>
         <ul>
             <li><span>POST</span><a href="https://capstone-mood-tracker.herokuapp.com/users/:id">/log-mood</a>
