@@ -37,7 +37,7 @@ const moodsRoutes = require("./router/moodsRoutes");
 //get to front-end
 app.get("/", (req,res) =>{
     //msg will show database is connected
-    res.json({msg:`
+    res.json(msg:`
     <h1>All Endpoints Available my API</h1>
     <h2>Users Route:</h2>
     <table>
@@ -94,7 +94,7 @@ app.get("/", (req,res) =>{
             <li><span>GET</span><a href="https://capstone-mood-tracker.herokuapp.com/users/:id">/view/:id</a></li>
             <li><span>GET</span><a href="https://capstone-mood-tracker.herokuapp.com/users/:id">/:id/view-all</a></li>
         </ul> 
-    `})
+    `)
 })
  
 
