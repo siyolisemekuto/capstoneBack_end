@@ -37,80 +37,81 @@ const moodsRoutes = require("./router/moodsRoutes");
 //get to front-end
 app.get("/", (req,res) =>{
     //msg will show database is connected
-    res.json({msg:`
+    res.send(`
+    <div class="endpoints">
     <h1>All Endpoints Available my API</h1>
-    <h2>Users Route:</h2>
-    <table>
+    <h2>Users Router:</h2>
+    <table align=center>
         <tr>
         <td>POST</td>
-        <td><a href="https://capstone-mood-tracker.herokuapp.com/users"></a><td>
-        <td>/register<td>
+        <td><a href="https://capstone-mood-tracker.herokuapp.com/users">/register</a></td>
         </tr>
         <tr>
         <td>POST</td>
-        <td><a href="https://capstone-mood-tracker.herokuapp.com/users"></a></td>
-        <td>/login</td>
+        <td><a href="https://capstone-mood-tracker.herokuapp.com/users">/login</a></td>
         </tr>
         <tr>
         <td>GET</td>
-        <td><a href="https://capstone-mood-tracker.herokuapp.com/users"></a></td>
-        <td>/verify<td>
+        <td><a href="https://capstone-mood-tracker.herokuapp.com/users">/verify</a></td>
         </tr>
         <tr>
         <td>GET</td>
-        <td><a href="https://capstone-mood-tracker.herokuapp.com/users"></a></td>
-        <td>/:id</td>
+        <td><a href="https://capstone-mood-tracker.herokuapp.com/users">/:id</a></td>
         </tr>
         <tr>
         <td>GET</td>
-        <td><a href="https://capstone-mood-tracker.herokuapp.com/users"></a></td>
-        <td>/</td>
+        <td><a href="https://capstone-mood-tracker.herokuapp.com/users">/</a></td>
         </tr>
         <tr>
         <td>DELETE</td>
-        <td><a href="https://capstone-mood-tracker.herokuapp.com/users"></a></td>
-        <td>/:id</td>
+        <td><a href="https://capstone-mood-tracker.herokuapp.com/users">/:id</a></td>
         </tr>
         <tr>
         <td>POST</td>
-        <td><a href="https://capstone-mood-tracker.herokuapp.com/users"></a></td>
-        <td>/forgot-psw</td>
+        <td><a href="https://capstone-mood-tracker.herokuapp.com/users">/forgot-psw</a></td>
         </tr>
         <tr>
         <td>PUT</td>
-        <td><a href="https://capstone-mood-tracker.herokuapp.com/users"></a></td>
-        <td>/:id</td>
+        <td><a href="https://capstone-mood-tracker.herokuapp.com/users">/:id</a></td>
         </tr>
         <tr>
         <td>PUT</td>
-        <td><a href="https://capstone-mood-tracker.herokuapp.com/users"></a></td>
-        <td>/reset-psw/:id</td>
+        <td><a href="https://capstone-mood-tracker.herokuapp.com/users">/reset-psw/:id</a></td>
         </tr>
     </table>
-    <h2>Moods:</h2>
-        <table>
+    <h2>Moods Router:</h2>
+        <table align="center">
             <tr>
             <td>POST</td>
-            <td><a href="https://capstone-mood-tracker.herokuapp.com/users/:id"></a></td>
-            <td>/log-mood</td>
+            <td><a href="https://capstone-mood-tracker.herokuapp.com/users/:id">/log-mood</a></td>
             </tr>
             <tr>
             <td>PUT</td>
-            <td><a href="https://capstone-mood-tracker.herokuapp.com/users/:id"></a></td>
-            <td>/edit/:id</td>
+            <td><a href="https://capstone-mood-tracker.herokuapp.com/users/:id">/edit/:id</a></td>
             </tr>
             <tr>
             <td>GET</td>
-            <td><a href="https://capstone-mood-tracker.herokuapp.com/users/:id"></a></td>
-            <td/view/:id</td>
+            <td><a href="https://capstone-mood-tracker.herokuapp.com/users/:id">/view/:id</a></td>
             </tr>
             <tr>
             <td>GET</td>
-            <td><a href="https://capstone-mood-tracker.herokuapp.com/users/:id"></a></td>
-            <td>/:id/view-all</td>
+            <td><a href="https://capstone-mood-tracker.herokuapp.com/users/:id">/:id/view-all</a></td>
             </tr>
         </table> 
-    `})
+        </div>
+
+        <style>
+        table, td {
+            border: 1px solid;
+          }
+        table{
+            width:50%;
+        }
+        .endpoints{
+            text-align:center;
+        }
+        </style>
+    `)
 })
  
 
