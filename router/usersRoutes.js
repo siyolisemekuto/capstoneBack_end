@@ -135,7 +135,7 @@ router.get("/",middleware, (req,res) =>{
 });
 
 //delete user account
-router.delete('/:id', (req,res)=>{
+router.delete('/:id/delete', (req,res)=>{
         try{
             con.query(
             `DELETE FROM users WHERE user_id=${req.params.id}`, 
@@ -213,7 +213,7 @@ router.delete('/:id', (req,res)=>{
     })
 
 //update user
-router.put('/:id', (req, res)=>{
+router.put('/:id/edit', (req, res)=>{
     const {name,email}= req.body
         try{
             con.query(
