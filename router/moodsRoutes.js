@@ -31,7 +31,7 @@ router.post("/log-mood",middleware, (req, res) => {
   });
 
  //update moods
-router.put('/edit/:id',middleware, (req, res)=>{
+router.patch('/edit/:id', (req, res)=>{
   const {rating,notes}= req.body
       try{
           con.query(
