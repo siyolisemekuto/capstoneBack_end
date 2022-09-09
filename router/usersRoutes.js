@@ -213,7 +213,7 @@ router.delete('/:id/delete', (req,res)=>{
     })
 
 //update user
-router.patch('/:id/edit',middleware, (req, res)=>{
+router.patch('/:id/edit', (req, res)=>{
     const {name,email}= req.body
         try{
             con.query(
