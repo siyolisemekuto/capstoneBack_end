@@ -122,7 +122,7 @@ router.get("/:id", (req,res) =>{
 
 
 //select all users
-router.get("/",middleware, (req,res) =>{
+router.get("/", (req,res) =>{
     try{
         con.query("SELECT * FROM users", (err, result) =>{
             if (err) throw err;
