@@ -18,6 +18,7 @@ router.post("/register", (req, res) => {
       name,
       email,
       password,
+      user_type,
       image
     } = req.body;
 
@@ -28,6 +29,7 @@ router.post("/register", (req, res) => {
     let user = {
       name,
       email,
+      user_type,
       //sending the hash value to be stored within the table
       password:hash,
       image
@@ -122,7 +124,8 @@ router.get("/:id", (req,res) =>{
 
 
 //select all users
-router.get("/", (req,res) =>{
+router.get("/",middleware, (req,res) =>{
+  if (req.user.user_type == "admin"){
     try{
         con.query("SELECT * FROM users", (err, result) =>{
             if (err) throw err;
@@ -132,7 +135,11 @@ router.get("/", (req,res) =>{
         console.log (error)
         res.status (400).send(error)
     }
+  }else{
+    res.send("Access denied")
+  }
 });
+
 
 //delete user account
 router.delete('/:id/delete', (req,res)=>{
